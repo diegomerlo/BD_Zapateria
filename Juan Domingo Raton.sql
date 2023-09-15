@@ -3,7 +3,7 @@
 -- CREACIÓN DE LA BASE DE DATOS
 DROP DATABASE IF EXISTS Zapateria;
 CREATE DATABASE Zapateria;
-use Zapateria;
+USE Zapateria;
 -- ------------------------------------------------------------------------------------------
 -- CREACIÓN DE TABLAS
 CREATE TABLE Sucursal (
@@ -42,7 +42,8 @@ precio_venta decimal(7,2),
 precio_proveedor decimal(7,2), 
 gama varchar (20) NOT NULL ,
 PRIMARY KEY (codigo_producto),
-FOREIGN KEY (gama) REFERENCES Gama(gama));
+FOREIGN KEY (gama) REFERENCES Gama(gama)
+);
 
 
 CREATE TABLE Reparacion (
@@ -51,31 +52,32 @@ precio_servicio int,
 descripcion varchar(100),
 area char (3) NOT NULL ,
 PRIMARY KEY (codigo_reparacion),
-FOREIGN KEY (area) REFERENCES Area(area));
+FOREIGN KEY (area) REFERENCES Area(area)
+);
 
 
 CREATE TABLE Estado_Pedido(
 codigo_estado int NOT NULL ,
-	descripcion varchar(100) not null,
-	PRIMARY KEY (codigo_estado)
+descripcion varchar(100) NOT NULL,
+PRIMARY KEY (codigo_estado)
 );
 
 
 CREATE TABLE Medios_de_pago(
 codigo_medio_de_pago int NOT NULL ,
-	descripcion varchar(100),
-	PRIMARY KEY (codigo_medio_de_pago)
+descripcion varchar(100),
+PRIMARY KEY (codigo_medio_de_pago)
 );
 
 
 CREATE TABLE Cliente (
-codigo_cliente int NOT NULL ,
+codigo_cliente int NOT NULL,
 nombre varchar(20),
 apellido1 varchar(20),
 apellido2 varchar(20),
-email varchar(50) check (email like '%@%'), /*Si tira error aca, ponerlo abajo de todo, junto con las pk y fk o buscar otra syntax aca: https://www.w3schools.com/sql/sql_check.asp*/
+email varchar(50) CHECK (email like '%@%'), /*Si tira error aca, ponerlo abajo de todo, junto con las pk y fk o buscar otra syntax aca: https://www.w3schools.com/sql/sql_check.asp*/
 telefono int,
-codigo_sucursal int NOT NULL ,
+codigo_sucursal int NOT NULL,
 PRIMARY KEY (codigo_cliente),
 FOREIGN KEY (codigo_sucursal) REFERENCES Sucursal(codigo_sucursal));
 
@@ -141,20 +143,33 @@ INSERT INTO Sucursal(Localidad, Ciudad, codigo_postal, telefono, numero_direccio
 
 
 INSERT INTO Gama VALUES ("ID","Infante deportivo"),
-						("NoD","Niño Deportivo"),
-						("NaD","Niña Deportiva"),
-						("AD","Adulto Deportivo"),
-						("HD","Hombre Deportivo"),
-						("MD","Mujer Deportiva"),
-						("ZV","Zapatos de vestir"),
-						("M", "Mocasín"),
-						("B", "Borcegos"),
-						("B.A.", "Botas Australianas");
+			("NoD","Niño Deportivo"),
+			("NaD","Niña Deportiva"),
+			("AD","Adulto Deportivo"),
+			("HD","Hombre Deportivo"),
+			("MD","Mujer Deportiva"),
+			("ZV","Zapatos de vestir"),
+			("M", "Mocasín"),
+			("B", "Borcegos"),
+			("B.A.", "Botas Australianas"),
+                        ("T", "Tacones");
                         
 INSERT INTO Area VALUES ("MAR","Marroquineria"),
-						("VAL","Valijero"),
+			("VAL","Valijero"),
                         ("ZAP","Zapatero");
                         
 INSERT INTO Producto(nombre, proveedor, descripcion, cantidad_en_stock, precio_venta, precio_proveedor, gama) VALUES
-						("Air Jordan Low Homage","Nike","Tremendas zapas",40,5000,2000,"AD");
+			("Air Jordan Low Homage","Nike","Tremendas zapas",100,5000,2000,"AD"),
+                        ("Air Huarache Moov","Nike","Comodas y perfectas para el gimnasio",40,3000,1500,"AD"),
+                        ("Borcego Holden","Briganti","Minimalistas",10,20000,400,"B"),
+                        ("Australian Boots","Tascani","Rosa y afelpadas",50,19000,2000,"B.A."),
+                        ("Mocasin Marrón","Tascani","Elegantes",1,500,200,"M"),
+                        ("Mocasin Brito","Tascani","Elegantes",20,5000,2000,"M"),
+                        ("Tacones High","Gucci","Finos",600,1950000,20000000,"T"),
+                        ("Tacones Deihm","Gucci","Finos",15,40000,2000,"T"),
+                        ("Zapatos Negros","Prada","Simples y humildes",1,100,40,"ZV"),
+                        ("Zapatos Jaine","Prada","Simples y humildes",100,50,12,"ZV");
+                        
+
+                        
                         
