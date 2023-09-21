@@ -113,7 +113,7 @@ CREATE TABLE Pedido (
 	codigo_cliente int NOT NULL ,
 	codigo_empleado	int NOT NULL ,
 	codigo_estado int NOT NULL ,
-	codigo_medio_de_pago int NOT NULL ,
+	codigo_medio_de_pago char (3) NOT NULL ,
 	PRIMARY KEY (codigo_pedido),
 	FOREIGN KEY (codigo_cliente) REFERENCES Cliente (codigo_cliente) on update cascade on delete cascade ,	
 	FOREIGN KEY (codigo_empleado) REFERENCES Empleado (codigo_empleado) on update cascade on delete cascade ,	
