@@ -42,7 +42,7 @@ CREATE TABLE Producto (
 	precio_proveedor decimal(7,2), 
 	gama varchar (20) NOT NULL ,
 	PRIMARY KEY (codigo_producto),
-	FOREIGN KEY (gama) REFERENCES Gama(gama)
+	FOREIGN KEY (gama) REFERENCES Gama(gama) on update cascade on delete cascade 
 );
 
 
@@ -52,7 +52,7 @@ CREATE TABLE Reparacion (
 	descripcion varchar(100),
 	area char (3) NOT NULL ,
 	PRIMARY KEY (codigo_reparacion),
-	FOREIGN KEY (area) REFERENCES Area(area)
+	FOREIGN KEY (area) REFERENCES Area(area) on update cascade on delete cascade 
 );
 
 
@@ -79,7 +79,7 @@ CREATE TABLE Cliente (
 	telefono int,
 	codigo_sucursal int NOT NULL ,
 	PRIMARY KEY (codigo_cliente),
-	FOREIGN KEY (codigo_sucursal) REFERENCES Sucursal(codigo_sucursal)
+	FOREIGN KEY (codigo_sucursal) REFERENCES Sucursal(codigo_sucursal) on update cascade on delete cascade 
 );
 
 CREATE TABLE Empleado (
@@ -99,8 +99,8 @@ CREATE TABLE Empleado (
 	codigo_jefe int default null,
 	codigo_sucursal int not null ,
 	PRIMARY KEY (codigo_empleado),
-	FOREIGN KEY (codigo_jefe) REFERENCES Empleado(codigo_empleado),
-	FOREIGN KEY (codigo_sucursal) REFERENCES Sucursal(codigo_sucursal)
+	FOREIGN KEY (codigo_jefe) REFERENCES Empleado(codigo_empleado) on update cascade on delete cascade ,
+	FOREIGN KEY (codigo_sucursal) REFERENCES Sucursal(codigo_sucursal) on update cascade on delete cascade 
 );
 
 
@@ -115,10 +115,10 @@ CREATE TABLE Pedido (
 	codigo_estado int NOT NULL ,
 	codigo_medio_de_pago int NOT NULL ,
 	PRIMARY KEY (codigo_pedido),
-	FOREIGN KEY (codigo_cliente) REFERENCES Cliente (codigo_cliente),	
-	FOREIGN KEY (codigo_empleado) REFERENCES Empleado (codigo_empleado),	
-	FOREIGN KEY (codigo_estado) REFERENCES Estado_Pedido (codigo_estado),	
-	FOREIGN KEY (codigo_medio_de_pago) REFERENCES Medios_de_pago (codigo_medio_de_pago)
+	FOREIGN KEY (codigo_cliente) REFERENCES Cliente (codigo_cliente) on update cascade on delete cascade ,	
+	FOREIGN KEY (codigo_empleado) REFERENCES Empleado (codigo_empleado) on update cascade on delete cascade ,	
+	FOREIGN KEY (codigo_estado) REFERENCES Estado_Pedido (codigo_estado) on update cascade on delete cascade ,	
+	FOREIGN KEY (codigo_medio_de_pago) REFERENCES Medios_de_pago (codigo_medio_de_pago) on update cascade on delete cascade 
 );
 
 
@@ -129,9 +129,9 @@ CREATE TABLE Detalle_Pedido (
 	cantidad int, 
 	producto_precio_unidad decimal(7,2),
 	reparacion_precio_servicio decimal(7,2),
-	foreign key (codigo_producto) references Producto (codigo_producto),	
-	foreign key (codigo_reparacion) references Reparacion (codigo_reparacion),	
-	foreign key (codigo_pedido) references Pedido (codigo_pedido)
+	foreign key (codigo_producto) references Producto (codigo_producto) on update cascade on delete cascade ,	
+	foreign key (codigo_reparacion) references Reparacion (codigo_reparacion) on update cascade on delete cascade ,	
+	foreign key (codigo_pedido) references Pedido (codigo_pedido) on update cascade on delete cascade 
 );
 
 
