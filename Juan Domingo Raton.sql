@@ -19,14 +19,14 @@ CREATE TABLE Sucursal (
 
 
 CREATE TABLE Gama (
-	gama varchar (20) NOT NULL ,
+	gama varchar(20) NOT NULL ,
 	Descripcion varchar(100) ,
     PRIMARY KEY (gama) 
 );
 
 
 CREATE TABLE Area (
-	area char (3) NOT NULL ,
+	area char(3) NOT NULL ,
 	Descripcion varchar(100) ,
 	PRIMARY KEY (Area) 
 );
@@ -71,26 +71,26 @@ CREATE TABLE Medios_de_pago(
 
 
 CREATE TABLE Cliente (
-	codigo_cliente int NOT NULL ,
+	codigo_cliente INT AUTO_INCREMENT,
 	nombre varchar(20),
 	apellido1 varchar(20),
 	apellido2 varchar(20),
-	email varchar(50) check (email like '%@%'), /*Si tira error aca, ponerlo abajo de todo, junto con las pk y fk o buscar otra syntax 													aca: https://www.w3schools.com/sql/sql_check.asp*/
-	telefono int,
-	codigo_sucursal int NOT NULL ,
+	email varchar(50) CHECK (email LIKE '%@%'), /*Si tira error aca, ponerlo abajo de todo, junto con las pk y fk o buscar otra syntax 													aca: https://www.w3schools.com/sql/sql_check.asp*/
+	telefono varchar(30),
+	codigo_sucursal int NOT NULL,
 	PRIMARY KEY (codigo_cliente),
-	FOREIGN KEY (codigo_sucursal) REFERENCES Sucursal(codigo_sucursal) on update cascade on delete cascade 
+	FOREIGN KEY (codigo_sucursal) REFERENCES Sucursal(codigo_sucursal) ON UPDATE CASCADE ON DELETE CASCADE 
 );
 
 CREATE TABLE Empleado (
-	codigo_empleado int NOT NULL,
-	nombre varchar(20) not null,
-	apellido1 varchar(20) not null,
+	codigo_empleado INT AUTO_INCREMENT,
+	nombre varchar(20) NOT NULL,
+	apellido1 varchar(20) NOT NULL,
 	apellido2 varchar(20),
 	telefono int,
-	email varchar(50) check (email like '%@%'),
-	puesto varchar (20) not null,
-	fechaAlta date default null, 
+	email varchar(50) CHECK (email like '%@%'),
+	puesto varchar (20) NOT NULL,
+	fechaAlta date default NULL, 
 	fechaBaja date,
 	calle_direccion varchar(50),
 	numero_direccion int,	
@@ -105,7 +105,7 @@ CREATE TABLE Empleado (
 
 
 CREATE TABLE Pedido (
-	codigo_pedido int not null,
+	codigo_pedido int AUTO_INCREMENT,
 	fecha_pedido date, 
 	fecha_entregado date default null,
 	observaciones varchar (100),
@@ -136,7 +136,7 @@ CREATE TABLE Detalle_Pedido (
 
 
 -- ------------------------------------------------------------------------------------------
--- Inserts
+-- INSERTS
 INSERT INTO Sucursal(Localidad, Ciudad, codigo_postal, telefono, numero_direccion, calle_direccion) VALUES
 						("Monte Castro","Ciudad Autonoma de Buenos Aires","C1407",2857463857,2299,"Marcos Paz"),
 						("Boedo","Ciudad Autonoma de Buenos Aires","C1250 ",1123678954,1101,"Castro"),
@@ -179,5 +179,18 @@ INSERT INTO Reparacion(precio_servicio, descripcion, area) VALUES (2000, "Costur
                                                                   (2000, "Ajuste de cintura", "MAR"),
                                                                   (2000, "Cambio de velcro", "MAR");
 
+INSERT INTO Cliente(nombre, apellido1, apellido2, email, telefono, codigo_sucursal) VALUES
+						("Agustín", "Buchito", "Salgueiro", "buchitosalgueiro@gmail.com", "11 7702-4004", 1),
+                        ("Mikel", "Taberna", "", "mikeltaberna05@gmail.com", "11 63516146", 2),
+                        ("Agus", "Buchito", "Salgueiro", "buchitosalgueiro@gmail.com", "11 7702-4004", 1),
+                        ("Agus", "Buchito", "Salgueiro", "buchitosalgueiro@gmail.com", "11 7702-4004", 1),
+                        ("Agus", "Buchito", "Salgueiro", "buchitosalgueiro@gmail.com", "11 7702-4004", 1),
+                        ("Agus", "Buchito", "Salgueiro", "buchitosalgueiro@gmail.com", "11 7702-4004", 1),
+                        ("Agus", "Buchito", "Salgueiro", "buchitosalgueiro@gmail.com", "11 7702-4004", 1),
+                        ("Agus", "Buchito", "Salgueiro", "buchitosalgueiro@gmail.com", "11 7702-4004", 1),
+                        ("Agus", "Buchito", "Salgueiro", "buchitosalgueiro@gmail.com", "11 7702-4004", 1),
+                        ("Agus", "Buchito", "Salgueiro", "buchitosalgueiro@gmail.com", "11 7702-4004", 1),
+                        ("Agus", "Buchito", "Salgueiro", "buchitosalgueiro@gmail.com", "11 7702-4004", 1),
+                        ("Agus", "Buchito", "Salgueiro", "buchitosalgueiro@gmail.com", "11 7702-4004", 1);
                         
                         
