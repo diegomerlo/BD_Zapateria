@@ -87,20 +87,20 @@ CREATE TABLE Empleado (
 	nombre varchar(20) NOT NULL,
 	apellido1 varchar(20) NOT NULL,
 	apellido2 varchar(20),
-	telefono int,
+	telefono varchar(30),
 	email varchar(50) CHECK (email like '%@%'),
 	puesto varchar (20) NOT NULL,
-	fechaAlta date default NULL, 
-	fechaBaja date,
+	fecha_Alta date NOT NULL, 
+	fecha_Baja date DEFAULT NULL,
 	calle_direccion varchar(50),
 	numero_direccion int,	
 	piso int,
 	letra char(1),
-	codigo_jefe int default null,
-	codigo_sucursal int not null ,
+	codigo_jefe int DEFAULT NULL,
+	codigo_sucursal int NOT NULL,
 	PRIMARY KEY (codigo_empleado),
-	FOREIGN KEY (codigo_jefe) REFERENCES Empleado(codigo_empleado) on update cascade on delete cascade ,
-	FOREIGN KEY (codigo_sucursal) REFERENCES Sucursal(codigo_sucursal) on update cascade on delete cascade 
+	FOREIGN KEY (codigo_jefe) REFERENCES Empleado(codigo_empleado) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (codigo_sucursal) REFERENCES Sucursal(codigo_sucursal) ON UPDATE CASCADE ON DELETE CASCADE 
 );
 
 
@@ -110,39 +110,40 @@ CREATE TABLE Pedido (
 	fecha_entregado date default null,
 	observaciones varchar (100),
 	fecha_envioEstimado date,
-	codigo_cliente int NOT NULL ,
-	codigo_empleado	int NOT NULL ,
-	codigo_estado int NOT NULL ,
-	codigo_medio_de_pago char (3) NOT NULL ,
+	codigo_cliente int NOT NULL,
+	codigo_empleado	int NOT NULL,
+	codigo_estado int NOT NULL,
+	codigo_medio_de_pago char (3) NOT NULL,
 	PRIMARY KEY (codigo_pedido),
-	FOREIGN KEY (codigo_cliente) REFERENCES Cliente (codigo_cliente) on update cascade on delete cascade ,	
-	FOREIGN KEY (codigo_empleado) REFERENCES Empleado (codigo_empleado) on update cascade on delete cascade ,	
-	FOREIGN KEY (codigo_estado) REFERENCES Estado_Pedido (codigo_estado) on update cascade on delete cascade ,	
-	FOREIGN KEY (codigo_medio_de_pago) REFERENCES Medios_de_pago (codigo_medio_de_pago) on update cascade on delete cascade 
+	FOREIGN KEY (codigo_cliente) REFERENCES Cliente (codigo_cliente) ON UPDATE CASCADE ON DELETE CASCADE,	
+	FOREIGN KEY (codigo_empleado) REFERENCES Empleado (codigo_empleado) ON UPDATE CASCADE ON DELETE CASCADE,	
+	FOREIGN KEY (codigo_estado) REFERENCES Estado_Pedido (codigo_estado) ON UPDATE CASCADE ON DELETE CASCADE,	
+	FOREIGN KEY (codigo_medio_de_pago) REFERENCES Medios_de_pago (codigo_medio_de_pago) ON UPDATE CASCADE ON DELETE CASCADE 
 );
 
 
 CREATE TABLE Detalle_Pedido (
-	codigo_producto int NOT NULL ,
-	codigo_reparacion int NOT NULL ,
-	codigo_pedido int NOT NULL ,
+	codigo_producto int NOT NULL,
+	codigo_reparacion int NOT NULL,
+	codigo_pedido int NOT NULL,
 	cantidad int, 
 	producto_precio_unidad decimal(7,2),
 	reparacion_precio_servicio decimal(7,2),
-	foreign key (codigo_producto) references Producto (codigo_producto) on update cascade on delete cascade ,	
-	foreign key (codigo_reparacion) references Reparacion (codigo_reparacion) on update cascade on delete cascade ,	
-	foreign key (codigo_pedido) references Pedido (codigo_pedido) on update cascade on delete cascade 
+	foreign key (codigo_producto) references Producto (codigo_producto) ON UPDATE CASCADE ON DELETE CASCADE,	
+	foreign key (codigo_reparacion) references Reparacion (codigo_reparacion) ON UPDATE CASCADE ON DELETE CASCADE,
+	foreign key (codigo_pedido) references Pedido (codigo_pedido) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-
+-- ------------------------------------------------------------------------------------------
 -- ------------------------------------------------------------------------------------------
 -- INSERTS
+
+-- ------------------------------------------------------------------------------------------
 INSERT INTO Sucursal(Localidad, Ciudad, codigo_postal, telefono, numero_direccion, calle_direccion) VALUES
 						("Monte Castro","Ciudad Autonoma de Buenos Aires","C1407",2857463857,2299,"Marcos Paz"),
 						("Boedo","Ciudad Autonoma de Buenos Aires","C1250 ",1123678954,1101,"Castro"),
 						("San Cristóbal","Ciudad Autonoma de Buenos Aires","C1253,",9800175643,1099,"Pasco");
-
-
+-- ------------------------------------------------------------------------------------------
 INSERT INTO Gama VALUES ("ID","Infante deportivo"),
 						("NoD","Niño Deportivo"),
 						("NaD","Niña Deportiva"),
@@ -154,11 +155,11 @@ INSERT INTO Gama VALUES ("ID","Infante deportivo"),
 						("B", "Borcegos"),
 						("B.A.", "Botas Australianas"),
                         ("T", "Tacones");
-                        
+-- ------------------------------------------------------------------------------------------
 INSERT INTO Area VALUES ("MAR","Marroquineria"),
 						("VAL","Valijero"),
                         ("ZAP","Zapatero");
-                        
+-- ------------------------------------------------------------------------------------------
 INSERT INTO Producto(nombre, proveedor, descripcion, cantidad_en_stock, precio_venta, precio_proveedor, gama) VALUES
 						("Air Jordan Low Homage","Nike","Tremendas zapas",100,5000,2000,"AD"),
                         ("Air Huarache Moov","Nike","Comodas y perfectas para el gimnasio",40,3000,1500,"AD"),
@@ -170,7 +171,7 @@ INSERT INTO Producto(nombre, proveedor, descripcion, cantidad_en_stock, precio_v
                         ("Tacones Deihm","Gucci","Finos",15,40000,2000,"T"),
                         ("Zapatos Negros","Prada","Simples y humildes",1,100,40,"ZV"),
                         ("Zapatos Jaine","Prada","Simples y humildes",100,50,12,"ZV");
-
+-- ------------------------------------------------------------------------------------------
 INSERT INTO Reparacion(precio_servicio, descripcion, area) VALUES (2000, "Costura Black", "ZAP"),
 																  (2000, "Parche", "ZAP"),
                                                                   (2000, "Cambio de base", "ZAP"),
@@ -178,7 +179,7 @@ INSERT INTO Reparacion(precio_servicio, descripcion, area) VALUES (2000, "Costur
                                                                   (2000, "Cambio de cierre", "MAR"),
                                                                   (2000, "Ajuste de cintura", "MAR"),
                                                                   (2000, "Cambio de velcro", "MAR");
-
+-- ------------------------------------------------------------------------------------------
 INSERT INTO Cliente(nombre, apellido1, apellido2, email, telefono, codigo_sucursal) VALUES
 						("Agustín", "Buchito", "Salgueiro", "buchitosalgueiro@gmail.com", "11 7702-4004", 1),
                         ("Mikel", "Taberna", "", "mikeltaberna05@gmail.com", "11 63516146", 2),
@@ -192,5 +193,17 @@ INSERT INTO Cliente(nombre, apellido1, apellido2, email, telefono, codigo_sucurs
                         ("Agus", "Buchito", "Salgueiro", "buchitosalgueiro@gmail.com", "11 7702-4004", 1),
                         ("Agus", "Buchito", "Salgueiro", "buchitosalgueiro@gmail.com", "11 7702-4004", 1),
                         ("Agus", "Buchito", "Salgueiro", "buchitosalgueiro@gmail.com", "11 7702-4004", 1);
-                        
-                        
+-- ------------------------------------------------------------------------------------------
+INSERT INTO Empleado(nombre, apellido1, apellido2, telefono, email, puesto, fecha_Alta, fecha_Baja, calle_direccion, 
+                     numero_direccion, piso, letra, codigo_jefe, codigo_sucursal) VALUES
+					("Jorge", "Pagani", "Jáuregui", "2 5611-1380", "pagani.high2012@gmail.com", "Jefe Sucursal", "2015-12-17", NULL, "Av. Remedios de Escalada de San Martín", 2486, 7, "A", NULL, 1),
+                    ("Jorge", "Pagani", "Jáuregui", "2 5611-1380", "pagani.high2012@gmail.com", "Jefe Sucursal", "2015-12-17", NULL, "Av. Remedios de Escalada de San Martín", 2486, 7, "A", NULL, 1),
+                    ("Jorge", "Pagani", "Jáuregui", "2 5611-1380", "pagani.high2012@gmail.com", "Jefe Sucursal", "2015-12-17", NULL, "Av. Remedios de Escalada de San Martín", 2486, 7, "A", NULL, 1),
+                    ("Jorge", "Pagani", "Jáuregui", "2 5611-1380", "pagani.high2012@gmail.com", "Jefe Sucursal", "2015-12-17", NULL, "Av. Remedios de Escalada de San Martín", 2486, 7, "A", NULL, 1),
+                    ("Jorge", "Pagani", "Jáuregui", "2 5611-1380", "pagani.high2012@gmail.com", "Jefe Sucursal", "2015-12-17", NULL, "Av. Remedios de Escalada de San Martín", 2486, 7, "A", NULL, 1),
+                    ("Jorge", "Pagani", "Jáuregui", "2 5611-1380", "pagani.high2012@gmail.com", "Jefe Sucursal", "2015-12-17", NULL, "Av. Remedios de Escalada de San Martín", 2486, 7, "A", NULL, 1),
+                    ("Jorge", "Pagani", "Jáuregui", "2 5611-1380", "pagani.high2012@gmail.com", "Jefe Sucursal", "2015-12-17", NULL, "Av. Remedios de Escalada de San Martín", 2486, 7, "A", NULL, 1),
+                    ("Jorge", "Pagani", "Jáuregui", "2 5611-1380", "pagani.high2012@gmail.com", "Jefe Sucursal", "2015-12-17", NULL, "Av. Remedios de Escalada de San Martín", 2486, 7, "A", NULL, 1),
+                    ("Jorge", "Pagani", "Jáuregui", "2 5611-1380", "pagani.high2012@gmail.com", "Jefe Sucursal", "2015-12-17", NULL, "Av. Remedios de Escalada de San Martín", 2486, 7, "A", NULL, 1),
+                    ("Jorge", "Pagani", "Jáuregui", "2 5611-1380", "pagani.high2012@gmail.com", "Jefe Sucursal", "2015-12-17", NULL, "Av. Remedios de Escalada de San Martín", 2486, 7, "A", NULL, 1);
+-- ------------------------------------------------------------------------------------------
