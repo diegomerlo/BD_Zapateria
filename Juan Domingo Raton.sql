@@ -207,3 +207,18 @@ INSERT INTO Empleado(nombre, apellido1, apellido2, telefono, email, puesto, fech
                     ("Jorge", "Pagani", "Jáuregui", "2 5611-1380", "pagani.high2012@gmail.com", "Jefe Sucursal", "2015-12-17", NULL, "Av. Remedios de Escalada de San Martín", 2486, 7, "A", NULL, 1),
                     ("Jorge", "Pagani", "Jáuregui", "2 5611-1380", "pagani.high2012@gmail.com", "Jefe Sucursal", "2015-12-17", NULL, "Av. Remedios de Escalada de San Martín", 2486, 7, "A", NULL, 1);
 -- ------------------------------------------------------------------------------------------
+# Estado de Pedido:
+INSERT INTO Estado_Pedido(codigo_estado, descripcion) VALUES ("Pen", "Pendiente"),
+															 ("Can", "Cancelado"),
+                                                             ("Ent", "Entregado");
+-- ------------------------------------------------------------------------------------------
+# Medios de pago: 
+INSERT INTO Medios_de_pago(codigo_medio_de_pago, descripcion) VALUES ('EFE ', 'Efectivo'),
+																	 ('MEP', 'Mercado Pago'),
+                                                                     ('PBE', 'Pago con Banco Electrónico'),
+																	 ('VIS', 'Visa'),
+																	 ('MAS', 'Mastercard'),
+																	 ('AME', 'American Express');
+-- ------------------------------------------------------------------------------------------
+# Pedido:
+#INSERT INTO Pedido
