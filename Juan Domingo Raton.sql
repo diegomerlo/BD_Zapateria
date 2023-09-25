@@ -206,7 +206,11 @@ INSERT INTO Empleado(nombre, apellido1, apellido2, telefono, email, puesto, fech
 					("Jorge", "Pagani", "Jáuregui", "2 5611-1380", "pagani.high2012@gmail.com", "Jefe Sucursal", "2015-12-17", NULL, "Av. Remedios de Escalada de San Martín", 2486, 7, "A", NULL, 1),
 					("Juan", "Gonzalez", "", "8850 9636", "juancho.gonzalez@gmail.com", "Empleado", "2019-12-20", NULL, "Caracas", 639, 0, "", NULL, 1),
 					("Clara", "Garcia", "", "9922 1243", "claru@gmail.com", "Empleado", "2018-4-19", NULL, "Joaquín V. González", 1111, 2, "B", NULL, 1),
-					("Martiniano", "Mollo", "", "1188 2288", "mollitooogd.gonzalez@gmail.com", "Jefe Sucursal", "2019-12-18", NULL, "Caracas", 639, 0, "", NULL, 2);
+					("Martiniano", "Mollo", "", "1188 2288", "mollitooogd.gonzalez@gmail.com", "Jefe Sucursal", "2019-12-18", NULL, "Luis Viale", 2239, 2, "A", NULL, 2),
+					("Lucas", "Trigo", "", "9485 1827", "HarinaDeTrigo@gmail.com", "Empleado", "2019-07-17", NULL, "Juan Agustín García", 999, 1, "B", NULL, 2),
+	("Leandro", "Disotteo", "", "1166 6666", "Leaan@gmail.com", "Jefe Sucursal", "2019-01-19", NULL, "Segurola", 2678, 3, "B", NULL, 3),
+	("Ruben", "Hernandez", "", "8877 9933", "Ruben@gmail.com", "Empleado", "2015-06-23", NULL, "Irigoyen", 500, 1, "A", NULL, 3);
+	
 --Martiniano Mollo, Gustavo Mollo, Antonella Mollo, Lucas Trigo, Jose maria gimenez, Pepe argento, Fabiola Pardella, Pablo, Malena Burgos, Lucia, 
 
                    /*("Jorge", "Pagani", "Jáuregui", "2 5611-1380", "pagani.high2012@gmail.com", "Jefe Sucursal", "2015-12-17", NULL, "Av. Remedios de Escalada de San Martín", 2486, 7, "A", NULL, 1),
