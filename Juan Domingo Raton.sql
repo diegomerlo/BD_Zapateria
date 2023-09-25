@@ -180,7 +180,9 @@ INSERT INTO Reparacion(precio_servicio, descripcion, area) VALUES (2000, "Costur
 -- ------------------------------------------------------------------------------------------
 INSERT INTO Cliente(nombre, apellido1, apellido2, email, telefono, codigo_sucursal) VALUES
 						("Agustín", "Salgueiro", "", "buchitosalgueiro@gmail.com", "11 7702-4004", 1),
-                        ("Mikel", "Taberna", "", "mikeltaberna05@gmail.com", "11 63516146", 2);
+                        ("Mikel", "Taberna", "", "mikeltaberna05@gmail.com", "11 63516146", 2),
+			("Diego", "Merlo", "", "diego.e.merlo@gmail.com", "44445555", 3);
+
                   /*      ("Agus", "Buchito", "Salgueiro", "buchitosalgueiro@gmail.com", "11 7702-4004", 1),
                         ("Agus", "Buchito", "Salgueiro", "buchitosalgueiro@gmail.com", "11 7702-4004", 1),
                         ("Agus", "Buchito", "Salgueiro", "buchitosalgueiro@gmail.com", "11 7702-4004", 1),
@@ -194,7 +196,9 @@ INSERT INTO Cliente(nombre, apellido1, apellido2, email, telefono, codigo_sucurs
 -- ------------------------------------------------------------------------------------------
 INSERT INTO Empleado(nombre, apellido1, apellido2, telefono, email, puesto, fecha_Alta, fecha_Baja, calle_direccion, 
                      numero_direccion, piso, letra, codigo_jefe, codigo_sucursal) VALUES
-					("Jorge", "Pagani", "Jáuregui", "2 5611-1380", "pagani.high2012@gmail.com", "Jefe Sucursal", "2015-12-17", NULL, "Av. Remedios de Escalada de San Martín", 2486, 7, "A", NULL, 1);
+					("Jorge", "Pagani", "Jáuregui", "2 5611-1380", "pagani.high2012@gmail.com", "Jefe Sucursal", "2015-12-17", NULL, "Av. Remedios de Escalada de San Martín", 2486, 7, "A", NULL, 1),
+					("Juan", "Gonzalez", "", "8850 9636", "juancho.gonzalez@gmail.com", "Empleado", "2019-12-20", NULL, "Caracas", 639, 0, "", NULL, 1);
+
                    /*("Jorge", "Pagani", "Jáuregui", "2 5611-1380", "pagani.high2012@gmail.com", "Jefe Sucursal", "2015-12-17", NULL, "Av. Remedios de Escalada de San Martín", 2486, 7, "A", NULL, 1),
                     ("Jorge", "Pagani", "Jáuregui", "2 5611-1380", "pagani.high2012@gmail.com", "Jefe Sucursal", "2015-12-17", NULL, "Av. Remedios de Escalada de San Martín", 2486, 7, "A", NULL, 1),
                     ("Jorge", "Pagani", "Jáuregui", "2 5611-1380", "pagani.high2012@gmail.com", "Jefe Sucursal", "2015-12-17", NULL, "Av. Remedios de Escalada de San Martín", 2486, 7, "A", NULL, 1),
