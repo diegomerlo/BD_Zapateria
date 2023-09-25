@@ -206,7 +206,7 @@ INSERT INTO Empleado(nombre, apellido1, apellido2, telefono, email, puesto, fech
 					("Jorge", "Pagani", "Jáuregui", "2 5611-1380", "pagani.high2012@gmail.com", "Jefe Sucursal", "2015-12-17", NULL, "Av. Remedios de Escalada de San Martín", 2486, 7, "A", NULL, 1),
 					("Juan", "Gonzalez", "", "8850 9636", "juancho.gonzalez@gmail.com", "Empleado", "2019-12-20", NULL, "Caracas", 639, 0, "", NULL, 1),
 					("Clara", "Garcia", "", "9922 1243", "claru@gmail.com", "Empleado", "2018-4-19", NULL, "Joaquín V. González", 1111, 2, "B", NULL, 1),
-					--("Martiniano", "Mollo", "", "1188 2288", "mollitooogd.gonzalez@gmail.com", "Jefe Sucursal", "2019-12-20", NULL, "Caracas", 639, 0, "", NULL, 1);
+					("Martiniano", "Mollo", "", "1188 2288", "mollitooogd.gonzalez@gmail.com", "Jefe Sucursal", "2019-12-18", NULL, "Caracas", 639, 0, "", NULL, 2);
 --Martiniano Mollo, Gustavo Mollo, Antonella Mollo, Lucas Trigo, Jose maria gimenez, Pepe argento, Fabiola Pardella, Pablo, Malena Burgos, Lucia, 
 
                    /*("Jorge", "Pagani", "Jáuregui", "2 5611-1380", "pagani.high2012@gmail.com", "Jefe Sucursal", "2015-12-17", NULL, "Av. Remedios de Escalada de San Martín", 2486, 7, "A", NULL, 1),
