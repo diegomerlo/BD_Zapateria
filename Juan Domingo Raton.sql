@@ -180,15 +180,15 @@ INSERT INTO Reparacion(precio_servicio, descripcion, area) VALUES (2000, "Costur
 -- ------------------------------------------------------------------------------------------
 INSERT INTO Cliente(nombre, apellido1, apellido2, email, telefono, codigo_sucursal) VALUES
 			("Agustín", "Salgueiro", "", "buchitosalgueiro@gmail.com", "11 7702-4004", 1),
-                        ("Mikel", "Taberna", "", "mikeltaberna05@gmail.com", "11 63516146", 2),
-			("Diego", "Merlo", "", "diego.e.merlo@gmail.com", "44445555", 3),
-			("Filiberto", "Lopez", "", "FiliElGanador@gmail.com", "11 54671823", 4),
-			("Florencia", "Diaz", "", "Flor03@gmail.com", "11 43567689", 5),
-			("Guadalupe", "Perez", "", "Guada123@gmail.com", "11 22990234", 6),
-			("Jimena", "Alvarez", "", "Jime420@gmail.com", "11 34674389", 7),
-			("Roberto", "Iglesias", "", "RoberI@gmail.com", "11 99558822", 8),
-			("Pedro", "Piedra", "", "PedroPicaPiedra@gmail.com", "11 85723948", 9),
-			("Norma", "Rene", "Elena", "Normi060@gmail.com", "11 4356 9384", 10);
+                        ("Mikel", "Taberna", "", "mikeltaberna05@gmail.com", "11 63516146", 1),
+			("Diego", "Merlo", "", "diego.e.merlo@gmail.com", "44445555", 1),
+			("Filiberto", "Lopez", "", "FiliElGanador@gmail.com", "11 54671823", 2),
+			("Florencia", "Diaz", "", "Flor03@gmail.com", "11 43567689", 2),
+			("Guadalupe", "Perez", "", "Guada123@gmail.com", "11 22990234", 2),
+			("Jimena", "Alvarez", "", "Jime420@gmail.com", "11 34674389", 3),
+			("Roberto", "Iglesias", "", "RoberI@gmail.com", "11 99558822", 3),
+			("Pedro", "Piedra", "", "PedroPicaPiedra@gmail.com", "11 85723948", 3),
+			("Norma", "Rene", "Elena", "Normi060@gmail.com", "11 4356 9384", 3);
 
                   /*      ("Agus", "Buchito", "Salgueiro", "buchitosalgueiro@gmail.com", "11 7702-4004", 1),
                         ("Agus", "Buchito", "Salgueiro", "buchitosalgueiro@gmail.com", "11 7702-4004", 1),
