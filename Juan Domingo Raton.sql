@@ -190,16 +190,6 @@ INSERT INTO Cliente(nombre, apellido1, apellido2, email, telefono, codigo_sucurs
 			("Pedro", "Piedra", "", "PedroPicaPiedra@gmail.com", "11 85723948", 3),
 			("Norma", "Rene", "Elena", "Normi060@gmail.com", "11 4356 9384", 3);
 
-                  /*      ("Agus", "Buchito", "Salgueiro", "buchitosalgueiro@gmail.com", "11 7702-4004", 1),
-                        ("Agus", "Buchito", "Salgueiro", "buchitosalgueiro@gmail.com", "11 7702-4004", 1),
-                        ("Agus", "Buchito", "Salgueiro", "buchitosalgueiro@gmail.com", "11 7702-4004", 1),
-                        ("Agus", "Buchito", "Salgueiro", "buchitosalgueiro@gmail.com", "11 7702-4004", 1),
-                        ("Agus", "Buchito", "Salgueiro", "buchitosalgueiro@gmail.com", "11 7702-4004", 1),
-                        ("Agus", "Buchito", "Salgueiro", "buchitosalgueiro@gmail.com", "11 7702-4004", 1),
-                        ("Agus", "Buchito", "Salgueiro", "buchitosalgueiro@gmail.com", "11 7702-4004", 1),
-                        ("Agus", "Buchito", "Salgueiro", "buchitosalgueiro@gmail.com", "11 7702-4004", 1),
-                        ("Agus", "Buchito", "Salgueiro", "buchitosalgueiro@gmail.com", "11 7702-4004", 1),
-                        ("Agus", "Buchito", "Salgueiro", "buchitosalgueiro@gmail.com", "11 7702-4004", 1);*/
 -- ------------------------------------------------------------------------------------------
 INSERT INTO Empleado(nombre, apellido1, apellido2, telefono, email, puesto, fecha_Alta, fecha_Baja, calle_direccion, 
                      numero_direccion, piso, letra, codigo_jefe, codigo_sucursal) VALUES
