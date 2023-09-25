@@ -1,5 +1,3 @@
-/*Para los precios, podemos pensar en utilizar numeric que es mas preciso*/
-
 -- CREACIÓN DE LA BASE DE DATOS
 DROP DATABASE IF EXISTS Zapateria;
 CREATE DATABASE Zapateria;
@@ -182,7 +180,7 @@ INSERT INTO Reparacion(precio_servicio, descripcion, area) VALUES (2000, "Costur
 -- ------------------------------------------------------------------------------------------
 INSERT INTO Cliente(nombre, apellido1, apellido2, email, telefono, codigo_sucursal) VALUES
 						("Agustín", "Salgueiro", "", "buchitosalgueiro@gmail.com", "11 7702-4004", 1),
-                        ("Mikel", "Taberna", "", "mikeltaberna05@gmail.com", "11 63516146", 2),
+                        ("Mikel", "Taberna", "", "mikeltaberna05@gmail.com", "11 63516146", 2);
                   /*      ("Agus", "Buchito", "Salgueiro", "buchitosalgueiro@gmail.com", "11 7702-4004", 1),
                         ("Agus", "Buchito", "Salgueiro", "buchitosalgueiro@gmail.com", "11 7702-4004", 1),
                         ("Agus", "Buchito", "Salgueiro", "buchitosalgueiro@gmail.com", "11 7702-4004", 1),
@@ -196,7 +194,7 @@ INSERT INTO Cliente(nombre, apellido1, apellido2, email, telefono, codigo_sucurs
 -- ------------------------------------------------------------------------------------------
 INSERT INTO Empleado(nombre, apellido1, apellido2, telefono, email, puesto, fecha_Alta, fecha_Baja, calle_direccion, 
                      numero_direccion, piso, letra, codigo_jefe, codigo_sucursal) VALUES
-					("Jorge", "Pagani", "Jáuregui", "2 5611-1380", "pagani.high2012@gmail.com", "Jefe Sucursal", "2015-12-17", NULL, "Av. Remedios de Escalada de San Martín", 2486, 7, "A", NULL, 1),
+					("Jorge", "Pagani", "Jáuregui", "2 5611-1380", "pagani.high2012@gmail.com", "Jefe Sucursal", "2015-12-17", NULL, "Av. Remedios de Escalada de San Martín", 2486, 7, "A", NULL, 1);
                    /*("Jorge", "Pagani", "Jáuregui", "2 5611-1380", "pagani.high2012@gmail.com", "Jefe Sucursal", "2015-12-17", NULL, "Av. Remedios de Escalada de San Martín", 2486, 7, "A", NULL, 1),
                     ("Jorge", "Pagani", "Jáuregui", "2 5611-1380", "pagani.high2012@gmail.com", "Jefe Sucursal", "2015-12-17", NULL, "Av. Remedios de Escalada de San Martín", 2486, 7, "A", NULL, 1),
                     ("Jorge", "Pagani", "Jáuregui", "2 5611-1380", "pagani.high2012@gmail.com", "Jefe Sucursal", "2015-12-17", NULL, "Av. Remedios de Escalada de San Martín", 2486, 7, "A", NULL, 1),
@@ -219,6 +217,3 @@ INSERT INTO Medios_de_pago(codigo_medio_de_pago, descripcion) VALUES ('EFE ', 'E
 																	 ('VIS', 'Visa'),
 																	 ('MAS', 'Mastercard'),
 																	 ('AME', 'American Express');
--- ------------------------------------------------------------------------------------------
-# Pedido:
-#INSERT INTO Pedido
