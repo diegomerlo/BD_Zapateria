@@ -235,3 +235,13 @@ INSERT INTO Medios_de_pago(codigo_medio_de_pago, descripcion) VALUES ('EFE ', 'E
 																	 ('VIS', 'Visa'),
 																	 ('MAS', 'Mastercard'),
 																	 ('AME', 'American Express');
+
+# Pedido: 
+INSERT INTO Pedido (fecha_pedido , fecha_entregado,observaciones,fecha_envioEstimado,codigo_cliente,codigo_empleado,codigo_estado,codigo_medio_de_pago) 
+VALUES 	(20230525,20230625,'Realizar Factura B',NULL,1,2,3,'MEP'),
+		(20230612,20230615,'Agregar cordones de regalo',20230614,2,3,3,'EFE'),
+        (20230613,20230620,NULL,20230618,3,2,3,'PBE'),
+        (20230613,20230625,'Envio urgente',NULL,4,5,3,'VIS'),
+        (20230615,NULL,'Realizar Factura A',NULL,5,5,2,'MEP'),
+        (20230705,20230715,'Pegado Adelante',NULL,6,5,3,'EFE'),
+        (20230925,NULL,'Sin apuro',20231015,7,7,1,'EFE');
