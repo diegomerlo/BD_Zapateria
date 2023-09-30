@@ -242,45 +242,49 @@ VALUES 	(20230525,20230625,'Realizar Factura B',NULL,1,2,3,'MEP'),
         (20230705,20230715,'Pegado Adelante',NULL,6,5,3,'EFE'),
         (20230925,NULL,'Sin apuro',20231015,7,7,1,'EFE');
 -- ------------------------------------------------------------------------------------------
-# Detalle_Pedido:
-	#Creé un Procedure para que inserte de manera automática X cantidad de Detalle_Pedido con distintos valores de precios.
+# Detalle Pedido:
 DROP PROCEDURE IF EXISTS insertsDetalle_Pedido;
 DELIMITER //
 CREATE PROCEDURE insertsDetalle_Pedido()
 BEGIN
 	DECLARE cont INT;
-    DECLARE cantidad_registros INT;
+	DECLARE cantidad_registros INT;
+	DECLARE cantidad_de_productos INT;
+	DECLARE cantidad_de_reparaciones INT;
+	DECLARE cantidad_de_pedidos INT;
 
-    SET cont = 1;
-    SET cantidad_registros = 7;
-    #SET cantidad_registros = (SELECT COUNT(*) FROM Producto);
-    
-    WHILE cont <= cantidad_registros DO
-    	INSERT INTO Detalle_Pedido (codigo_producto, codigo_reparacion, codigo_pedido, cantidad, producto_precio_unidad,
+	    SET cont = 1;
+	    SET cantidad_registros = 7;
+	
+	    SET cantidad_de_productos = (SELECT COUNT(*) FROM Producto);
+	    SET cantidad_de_reparaciones = (SELECT COUNT(*) FROM Reparacion);
+		SET cantidad_de_pedidos =	(SELECT COUNT(*) FROM Pedido);
+	    
+	    IF cantidad_de_productos <= cantidad_de_reparaciones THEN
+	          IF cantidad_de_productos<=cantidad_de_pedidos THEN
+	            	SET cantidad_registros = cantidad_de_productos;
+	          END IF;  
+	    ELSEIF cantidad_de_reparaciones <= cantidad_de_productos THEN
+	      	  IF cantidad_de_reparaciones <= cantidad_de_pedidos THEN
+	            	SET cantidad_registros = cantidad_de_reparaciones;
+	          END IF;
+	    ELSEIF cantidad_de_pedidos <= cantidad_de_productos THEN
+	    	  IF cantidad_de_pedidos <= cantidad_de_reparaciones THEN
+	            	SET cantidad_registros = cantidad_de_pedidos;
+	          END IF;  
+	    END IF;
+
+    	WHILE cont <= cantidad_registros DO
+    		INSERT INTO Detalle_Pedido (codigo_producto, codigo_reparacion, codigo_pedido, cantidad, producto_precio_unidad,
                                     reparacion_precio_servicio) 
 		VALUES (cont, cont, cont, (cont*2), (SELECT precio_venta FROM Producto WHERE codigo_producto=cont),
                 							(SELECT precio_servicio FROM Reparacion WHERE codigo_reparacion=cont));
-        SET cont = cont + 1;
+        	SET cont = cont + 1;
 	END WHILE;
 
 END //
 DELIMITER ;
 CALL insertsDetalle_Pedido();
 
-
-
-
-
-/*
-	codigo_producto int NOT NULL,
-	codigo_reparacion int NOT NULL,
-	codigo_pedido int NOT NULL,
-	cantidad int, 
-	producto_precio_unidad decimal(7,2),
-	reparacion_precio_servicio decimal(7,2),
-  
-  	foreign key (codigo_producto) references Producto (codigo_producto) ON UPDATE CASCADE ON DELETE CASCADE,	
-	foreign key (codigo_reparacion) references Reparacion (codigo_reparacion) ON UPDATE CASCADE ON DELETE CASCADE,
-	foreign key (codigo_pedido) references Pedido (codigo_pedido) ON UPDATE CASCADE ON DELETE CASCADE
-);
-*/
+#Pará agus antes de que digas "quien fue el pelado que puso tantos if raros ñiñiñi", mirá, es un PROCEDURE para
+#hacer inserts variados sin que salte error, porque hace la cantidad justa y necesaria sin utilizar FK que no existan en las tablas PK
