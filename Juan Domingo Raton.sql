@@ -186,7 +186,7 @@ VALUES 	(2000, "Costura Black", "ZAP"),
 		(50000, "Cambio de taco", "ZAP"),
 		(15000, "Cambio de cierre", "MAR"),
 		(10, "Ajuste de cintura", "MAR"),
-		(80, "Cambio de velcro", "MAR");
+		(80, "Cambio de velcro", "MAR");              
 -- ------------------------------------------------------------------------------------------
 # Cliente
 INSERT INTO Cliente(nombre, apellido1, apellido2, email, telefono, codigo_sucursal)
@@ -240,7 +240,11 @@ VALUES 	(20230525,20230625,'Realizar Factura B',NULL,1,2,3,'MEP'),
         (20230613,20230625,'Envio urgente',NULL,4,5,3,'VIS'),
         (20230615,NULL,'Realizar Factura A',NULL,5,5,2,'MEP'),
         (20230705,20230715,'Pegado Adelante',NULL,6,5,3,'EFE'),
-        (20230925,NULL,'Sin apuro',20231015,7,7,1,'EFE');
+        (20230925,NULL,'Sin apuro',20231015,7,7,1,'EFE')
+        
+        ,(20230925,NULL,'Sin apuro',20231015,7,7,1,'EFE'),(20230925,NULL,'Sin apuro',20231015,7,7,1,'EFE'),(20230925,NULL,'Sin apuro',20231015,7,7,1,'EFE')
+        
+        ;
 -- ------------------------------------------------------------------------------------------
 # Detalle Pedido:
 DROP PROCEDURE IF EXISTS insertsDetalle_Pedido;
@@ -253,27 +257,27 @@ BEGIN
 	DECLARE cantidad_de_reparaciones INT;
 	DECLARE cantidad_de_pedidos INT;
 
-	    SET cont = 1;
-	    SET cantidad_registros = 7;
+	SET cont = 1;
+	SET cantidad_registros = 5;
 	
-	    SET cantidad_de_productos = (SELECT COUNT(*) FROM Producto);
-	    SET cantidad_de_reparaciones = (SELECT COUNT(*) FROM Reparacion);
-		SET cantidad_de_pedidos =	(SELECT COUNT(*) FROM Pedido);
-	    
-	    IF cantidad_de_productos <= cantidad_de_reparaciones THEN
-	          IF cantidad_de_productos<=cantidad_de_pedidos THEN
-	            	SET cantidad_registros = cantidad_de_productos;
-	          END IF;  
-	    ELSEIF cantidad_de_reparaciones <= cantidad_de_productos THEN
-	      	  IF cantidad_de_reparaciones <= cantidad_de_pedidos THEN
-	            	SET cantidad_registros = cantidad_de_reparaciones;
-	          END IF;
-	    ELSEIF cantidad_de_pedidos <= cantidad_de_productos THEN
-	    	  IF cantidad_de_pedidos <= cantidad_de_reparaciones THEN
-	            	SET cantidad_registros = cantidad_de_pedidos;
-	          END IF;  
-	    END IF;
-
+	SET cantidad_de_productos = (SELECT COUNT(*) FROM Producto);
+	SET cantidad_de_reparaciones = (SELECT COUNT(*) FROM Reparacion);
+	SET cantidad_de_pedidos =	(SELECT COUNT(*) FROM Pedido);
+        
+	IF cantidad_de_productos < cantidad_de_reparaciones THEN
+		IF cantidad_de_productos <= cantidad_de_pedidos THEN
+	            SET cantidad_registros = cantidad_de_productos;
+	        END IF;  
+	ELSEIF cantidad_de_reparaciones < cantidad_de_productos THEN
+	      	IF cantidad_de_reparaciones <= cantidad_de_pedidos THEN
+	            SET cantidad_registros = cantidad_de_reparaciones;
+	        END IF;
+	ELSEIF cantidad_de_pedidos < cantidad_de_productos THEN
+	    	IF cantidad_de_pedidos <= cantidad_de_reparaciones THEN
+	            SET cantidad_registros = cantidad_de_pedidos;
+	        END IF;  
+	END IF;		       
+        
     	WHILE cont <= cantidad_registros DO
     		INSERT INTO Detalle_Pedido (codigo_producto, codigo_reparacion, codigo_pedido, cantidad, producto_precio_unidad,
                                     reparacion_precio_servicio) 
@@ -281,7 +285,7 @@ BEGIN
                 							(SELECT precio_servicio FROM Reparacion WHERE codigo_reparacion=cont));
         	SET cont = cont + 1;
 	END WHILE;
-
+	
 END //
 DELIMITER ;
 CALL insertsDetalle_Pedido();
