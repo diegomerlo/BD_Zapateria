@@ -285,6 +285,3 @@ BEGIN
 END //
 DELIMITER ;
 CALL insertsDetalle_Pedido();
-
-#Pará agus antes de que digas "quien fue el pelado que puso tantos if raros ñiñiñi", mirá, es un PROCEDURE para
-#hacer inserts variados sin que salte error, porque hace la cantidad justa y necesaria sin utilizar FK que no existan en las tablas PK
