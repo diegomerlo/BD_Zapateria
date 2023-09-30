@@ -181,12 +181,12 @@ VALUES	("Air Jordan Low Homage","Nike","Tremendas zapas",100,5000,2000,"AD"),
 # Reparación
 INSERT INTO Reparacion(precio_servicio, descripcion, area)
 VALUES 	(2000, "Costura Black", "ZAP"),
-		(2000, "Parche", "ZAP"),
-		(2000, "Cambio de base", "ZAP"),
-		(2000, "Cambio de taco", "ZAP"),
-		(2000, "Cambio de cierre", "MAR"),
-		(2000, "Ajuste de cintura", "MAR"),
-		(2000, "Cambio de velcro", "MAR");
+		(150, "Parche", "ZAP"),
+		(1000, "Cambio de base", "ZAP"),
+		(50000, "Cambio de taco", "ZAP"),
+		(15000, "Cambio de cierre", "MAR"),
+		(10, "Ajuste de cintura", "MAR"),
+		(80, "Cambio de velcro", "MAR");
 -- ------------------------------------------------------------------------------------------
 # Cliente
 INSERT INTO Cliente(nombre, apellido1, apellido2, email, telefono, codigo_sucursal)
@@ -242,13 +242,35 @@ VALUES 	(20230525,20230625,'Realizar Factura B',NULL,1,2,3,'MEP'),
         (20230705,20230715,'Pegado Adelante',NULL,6,5,3,'EFE'),
         (20230925,NULL,'Sin apuro',20231015,7,7,1,'EFE');
 -- ------------------------------------------------------------------------------------------
-# Detalle Pedido:
-INSERT INTO Detalle_Pedido (codigo_producto, codigo_reparacion, codigo_pedido, cantidad, producto_precio_unidad, 					
-                            producto_precio_servicio) 
-VALUES (),
+# Detalle_Pedido:
+	#Creé un Procedure para que inserte de manera automática X cantidad de Detalle_Pedido con distintos valores de precios.
+DROP PROCEDURE IF EXISTS insertsDetalle_Pedido;
+DELIMITER //
+CREATE PROCEDURE insertsDetalle_Pedido()
+BEGIN
+	DECLARE cont INT;
+    DECLARE cantidad_registros INT;
+
+    SET cont = 1;
+    SET cantidad_registros = 7;
+    #SET cantidad_registros = (SELECT COUNT(*) FROM Producto);
+    
+    WHILE cont <= cantidad_registros DO
+    	INSERT INTO Detalle_Pedido (codigo_producto, codigo_reparacion, codigo_pedido, cantidad, producto_precio_unidad,
+                                    reparacion_precio_servicio) 
+		VALUES (cont, cont, cont, (cont*2), (SELECT precio_venta FROM Producto WHERE codigo_producto=cont),
+                							(SELECT precio_servicio FROM Reparacion WHERE codigo_reparacion=cont));
+        SET cont = cont + 1;
+	END WHILE;
+
+END //
+DELIMITER ;
+CALL insertsDetalle_Pedido();
 
 
-;
+
+
+
 /*
 	codigo_producto int NOT NULL,
 	codigo_reparacion int NOT NULL,
@@ -256,12 +278,9 @@ VALUES (),
 	cantidad int, 
 	producto_precio_unidad decimal(7,2),
 	reparacion_precio_servicio decimal(7,2),
+  
+  	foreign key (codigo_producto) references Producto (codigo_producto) ON UPDATE CASCADE ON DELETE CASCADE,	
+	foreign key (codigo_reparacion) references Reparacion (codigo_reparacion) ON UPDATE CASCADE ON DELETE CASCADE,
+	foreign key (codigo_pedido) references Pedido (codigo_pedido) ON UPDATE CASCADE ON DELETE CASCADE
+);
 */
-
-
-
-
-
-
-
-
