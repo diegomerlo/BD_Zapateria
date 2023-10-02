@@ -17,7 +17,9 @@ SELECT COUNT(*) FROM cliente C WHERE C.codigo_sucursal=3;
 SELECT AVG(D.producto_precio_unidad) Producto_avg, AVG(D.reparacion_precio_servicio) Servicio_avg FROM detalle_pedido D;
 
 /*------------------Inner Join-------------------------*/
-SELECT * FROM cliente c
+
+#Devuelve los clientes que hayan comprado un producto clasificado en la gama 'M' (mocasín)
+SELECT c.* FROM cliente c
 INNER JOIN pedido p ON c.codigo_cliente=p.codigo_cliente
 INNER JOIN detalle_pedido d ON p.codigo_pedido=d.codigo_pedido
 INNER JOIN producto pro ON d.codigo_producto=pro.codigo_producto
