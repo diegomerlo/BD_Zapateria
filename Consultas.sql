@@ -49,3 +49,5 @@ WHERE m.codigo_medio_de_pago='MEP';
 /*------------------Order By------------------*/
 
 SELECT dp.codigo_producto AS Codigo,dp.producto_precio_unidad AS Precio FROM detalle_pedido dp ORDER BY dp.producto_precio_unidad ASC;
+
+SELECT e.nombre, e.fecha_Alta FROM empleado e ORDER BY e.fecha_Alta ASC;
