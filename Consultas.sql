@@ -21,14 +21,13 @@ FROM pedido p
 GROUP BY p.codigo_medio_de_pago
 HAVING COUNT(p.codigo_medio_de_pago) < 5;
 
-/*
-SELECT SUM(d.producto_precio_unidad) 'dinero total de productos vendidos',e.*,d.* FROM empleado e
+#Devuelve los empleados cuyas ventas sumen menos de 25000 
+SELECT SUM(d.producto_precio_unidad) 'dinero total de productos vendidos',e.* FROM empleado e
 INNER JOIN sucursal s ON e.codigo_sucursal=s.codigo_sucursal
 INNER JOIN pedido p ON e.codigo_empleado=p.codigo_empleado
 INNER JOIN detalle_pedido d ON p.codigo_pedido=d.codigo_pedido
 GROUP BY e.codigo_empleado
-#HAVING AVG()
-;*/
+HAVING SUM(d.producto_precio_unidad)<25000;
 
 
 /*------------------Campos calculados (Count, Sum, Max, Min, Avg)------------------*/
