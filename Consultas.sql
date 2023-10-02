@@ -51,3 +51,9 @@ WHERE m.codigo_medio_de_pago='MEP';
 SELECT dp.codigo_producto AS Codigo,dp.producto_precio_unidad AS Precio FROM detalle_pedido dp ORDER BY dp.producto_precio_unidad ASC;
 
 SELECT e.nombre, e.fecha_Alta FROM empleado e ORDER BY e.fecha_Alta ASC;
+
+/*------------------SubConsultas------------------*/
+
+SELECT CONCAT(e.apellido1,' ',e.apellido2,', ',e.nombre) AS Nombre,e.puesto AS Puesto 
+  FROM empleado e 
+  WHERE e.codigo_empleado IN (SELECT codigo_empleado FROM pedido);
