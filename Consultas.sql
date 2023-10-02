@@ -8,6 +8,8 @@ SELECT c.nombre FROM cliente c WHERE c.nombre LIKE 'F%';
 
 SELECT p.fecha_pedido, p.fecha_entregado FROM pedido p WHERE MONTH(p.fecha_envioEstimado) = 10;
 
+SELECT p.fecha_pedido, p.fecha_entregado, DATEDIFF(p.fecha_envioEstimado,p.fecha_pedido) AS "Dias para la entrega"
+FROM pedido p WHERE p.fecha_envioEstimado IS NOT NULL AND DATEDIFF(p.fecha_envioEstimado,p.fecha_pedido) > 2;
 
 
 /*------------------Campos calculados (Count, Sum, Max, Min, Avg)--------------------------------------*/
