@@ -14,6 +14,14 @@ FROM pedido p WHERE p.fecha_envioEstimado IS NOT NULL AND DATEDIFF(p.fecha_envio
 SELECT p.fecha_pedido, p.fecha_entregado, DATEDIFF(p.fecha_envioEstimado,p.fecha_pedido) AS "Dias para la entrega"
 FROM pedido p WHERE p.fecha_envioEstimado IS NOT NULL AND DATEDIFF(p.fecha_envioEstimado,p.fecha_pedido) < 15;
 
+/*-------------------Agrupación-------------------------------*/
+#Devuelve la cantidad de veces de los métodos de pago que hayan sido usados menos de 5 veces
+SELECT COUNT(*) 'cantidad de veces', p.codigo_medio_de_pago
+FROM pedido p
+GROUP BY p.codigo_medio_de_pago
+HAVING COUNT(p.codigo_medio_de_pago) < 5;
+
+
 
 /*------------------Campos calculados (Count, Sum, Max, Min, Avg)--------------------------------------*/
 
