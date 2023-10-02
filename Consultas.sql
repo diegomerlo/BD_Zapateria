@@ -26,3 +26,10 @@ INNER JOIN producto pro ON d.codigo_producto=pro.codigo_producto
 INNER JOIN gama g ON pro.gama=g.gama
 WHERE g.gama='M';
 
+#Devuelve las sucursales en las que se haya pagado con 'MEP' (MercadoPago)
+SELECT s.* FROM sucursal s
+INNER JOIN cliente c ON s.codigo_sucursal=c.codigo_sucursal
+INNER JOIN pedido p ON c.codigo_cliente=p.codigo_cliente
+INNER JOIN medios_de_pago m ON p.codigo_medio_de_pago=m.codigo_medio_de_pago
+WHERE m.codigo_medio_de_pago='MEP';
+
