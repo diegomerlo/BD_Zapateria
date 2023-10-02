@@ -1,2 +1,2 @@
-/*----------------Operadores Lógicos-------------*/
+./*----------------Operadores Lógicos-------------*/
 SELECT p.nombre AS Nombre FROM producto p WHERE p.precio_venta BETWEEN 2000 AND 5000; 
