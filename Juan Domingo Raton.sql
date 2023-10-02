@@ -240,11 +240,10 @@ VALUES 	(20230525,20230625,'Realizar Factura B',NULL,1,2,3,'MEP'),
         (20230613,20230625,'Envio urgente',NULL,4,5,3,'VIS'),
         (20230615,NULL,'Realizar Factura A',NULL,5,5,2,'MEP'),
         (20230705,20230715,'Pegado Adelante',NULL,6,5,3,'EFE'),
-        (20230925,NULL,'Sin apuro',20231015,7,7,1,'EFE')
-        
-        ,(20230925,NULL,'Sin apuro',20231015,7,7,1,'EFE'),(20230925,NULL,'Sin apuro',20231015,7,7,1,'EFE'),(20230925,NULL,'Sin apuro',20231015,7,7,1,'EFE')
-        
-        ;
+        (20230920,NULL,'Sin apuro',20231015,7,7,1,'EFE'),
+	(20230925,NULL,'Sin apuro',20231002,7,7,1,'EFE'),
+	(20230926,NULL,'Sin apuro',20231010,7,7,1,'EFE'),
+	(20230930,NULL,'Sin apuro',20231020,7,7,1,'EFE');
 -- ------------------------------------------------------------------------------------------
 # Detalle Pedido:
 DROP PROCEDURE IF EXISTS insertsDetalle_Pedido;
