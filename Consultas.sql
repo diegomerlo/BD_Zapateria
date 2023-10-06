@@ -86,3 +86,8 @@ WHERE s.codigo_sucursal IN (SELECT c.codigo_sucursal
                                                      WHERE p.codigo_pedido IN (SELECT d.codigo_pedido
                                                                               FROM detalle_pedido d
                                                                               WHERE d.reparacion_precio_servicio<100)));
+
+/*------------------Vistas y sus posibles usos------------------*/
+
+
+
