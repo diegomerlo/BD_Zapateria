@@ -88,6 +88,16 @@ WHERE s.codigo_sucursal IN (SELECT c.codigo_sucursal
                                                                               WHERE d.reparacion_precio_servicio<100)));
 
 /*------------------Vistas y sus posibles usos------------------*/
+#Vista que devuelve todos los pedidos que hayan sido pagados con el método mercado pago
+CREATE OR REPLACE VIEW mercado_pago AS
+	SELECT * 
+    FROM pedido p
+    WHERE p.codigo_medio_de_pago='MEP';
+SELECT * FROM mercado_pago;
 
-
-
+#Vista que devuelve todos los clientes que hayan comprado en la sucursal de monte castro
+CREATE OR REPLACE VIEW Monte_Castro AS
+	SELECT * 
+    FROM cliente c
+    WHERE c.codigo_sucursal=1;
+SELECT * FROM Monte_Castro;
