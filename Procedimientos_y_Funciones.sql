@@ -57,4 +57,46 @@ DELIMITER ;
 
 CALL modificarStock(2, 465, "mas");
 #_________________________________________________________________________________________________________________________________
+#Procedimiento que inserta 
+DROP PROCEDURE IF EXISTS insertsDetalle_Pedido;
+DELIMITER //
+CREATE PROCEDURE insertsDetalle_Pedido()
+BEGIN
+    DECLARE cont INT;
+    DECLARE cantidad_registros INT;
+    DECLARE cantidad_de_productos INT;
+    DECLARE cantidad_de_reparaciones INT;
+    DECLARE cantidad_de_pedidos INT;
+
+    SET contaidor = 1;
+    SET cantidad_registros = 5;
+
+    SET cantidad_de_productos = (SELECT COUNT(*) FROM Producto);
+    SET cantidad_de_reparaciones = (SELECT COUNT(*) FROM Reparacion);
+    SET cantidad_de_pedidos = (SELECT COUNT(*) FROM Pedido);
+
+    IF cantidad_de_productos < cantidad_de_reparaciones THEN
+        IF cantidad_de_productos <= cantidad_de_pedidos THEN
+            SET cantidad_registros = cantidad_de_productos;
+        END IF;
+    ELSEIF cantidad_de_reparaciones < cantidad_de_productos THEN
+        IF cantidad_de_reparaciones <= cantidad_de_pedidos THEN
+            SET cantidad_registros = cantidad_de_reparaciones;
+        END IF;
+    ELSEIF cantidad_de_pedidos < cantidad_de_productos THEN
+        IF cantidad_de_pedidos <= cantidad_de_reparaciones THEN
+            SET cantidad_registros = cantidad_de_pedidos;
+        END IF;
+    END IF;
+
+    WHILE contaidor <= cantidad_registros DO
+        INSERT INTO Detalle_Pedido (codigo_producto, codigo_reparacion, codigo_pedido, cantidad, producto_precio_unidad,
+            reparacion_precio_servicio)
+        VALUES (contaidor, contaidor, contaidor, (contaidor * 2), (SELECT precio_venta FROM Producto WHERE codigo_producto = contaidor),
+            (SELECT precio_servicio FROM Reparacion WHERE codigo_reparacion = contaidor));
+        SET contaidor = contaidor + 1;
+    END WHILE;
+END //
+DELIMITER ;
+
 
