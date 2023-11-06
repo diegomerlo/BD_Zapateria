@@ -9,6 +9,7 @@ BEGIN
 END//
 DELIMITER ;
 #_________________________________________________________________________________________________________________________________
+#Funcion que devuelve el precio de un producto con un porcentaje de descuento aplicado
 DELIMITER //
 CREATE OR REPLACE FUNCTION descuento(id INT, porcentaje INT)
 RETURNS INT
@@ -57,12 +58,12 @@ DELIMITER ;
 
 CALL modificarStock(2, 465, "mas");
 #_________________________________________________________________________________________________________________________________
-#Procedimiento que inserta 
+#Procedimiento que inserta registros en la tabla Detalle_Pedido respetando la integridad referencial que tiene con las tablas con las cuales esta conectada
 DROP PROCEDURE IF EXISTS insertsDetalle_Pedido;
 DELIMITER //
 CREATE PROCEDURE insertsDetalle_Pedido()
 BEGIN
-    DECLARE cont INT;
+    DECLARE contaidor INT;
     DECLARE cantidad_registros INT;
     DECLARE cantidad_de_productos INT;
     DECLARE cantidad_de_reparaciones INT;
