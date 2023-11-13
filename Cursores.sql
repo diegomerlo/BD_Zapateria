@@ -1,3 +1,4 @@
+-- Suma el precio de todos los productos y los muestra, el handler se encarga de tratar el error al finalizar la lectura del cursor a traves de un booleano
 drop procedure if exists suma_productos;
 DELIMITER //
 
