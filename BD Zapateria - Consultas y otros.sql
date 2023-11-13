@@ -64,8 +64,12 @@ WHERE m.codigo_medio_de_pago='MEP';
 
 /*------------------Order By------------------*/
 
+#Consulta que devuelve los registros de detalle_pedido, ordenándolos por su precio en orden ASCENDENTE.
+#Sirve para conocer el pedido más barato.
 SELECT dp.codigo_producto AS Codigo,dp.producto_precio_unidad AS Precio FROM detalle_pedido dp ORDER BY dp.producto_precio_unidad ASC;
 
+#Consulta que devuelve los registros de empleado, ordenándolos por su fecha de ingreso al sistema en orden ASCENDENTE.
+#Sirve para conocer el empleado más antiguo.
 SELECT e.nombre, e.fecha_Alta FROM empleado e ORDER BY e.fecha_Alta ASC;
 
 /*------------------SubConsultas------------------*/
