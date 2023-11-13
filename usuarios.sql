@@ -9,3 +9,12 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON zapateria.mercado_pago TO 'Contador'@'lo
 #Crear usuario Jefe, que puede revisar la vista que solamente tiene a los empleados que no han sido dados de baja (que no han sido echados)
 CREATE USER IF NOT EXISTS 'Jefe'@'localhost' IDENTIFIED BY 'JEFE';
 GRANT SELECT ON zapateria.empleados_actuales TO 'Jefe'@'localhost';
+
+#Demostracion de usuarios: 
+#mysql -u Gerente -p contrasena
+#mysql -u Contador -p 0000
+#mysql -u Jefe -p JEFE
+#SHOW DATABASES;
+#USE zapateria;
+#SHOW TABLES;
+#SELECT * FROM empleado;
