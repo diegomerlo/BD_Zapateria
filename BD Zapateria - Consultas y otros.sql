@@ -256,3 +256,4 @@ GRANT SELECT ON zapateria.empleados_actuales TO 'Jefe'@'localhost';
 #USE zapateria;
 #SHOW TABLES;
 #SELECT * FROM empleado;
+#UPDATE sucursal set Localidad = 'Paternal' WHERE codigo_sucursal =1;
