@@ -148,7 +148,7 @@ CREATE TRIGGER AfterNombreUsuario
 AFTER UPDATE ON Sucursal 
 FOR EACH ROW
 BEGIN
-    INSERT INTO auditoria (usuario, fecha, accion, detalles)
+    INSERT INTO Registro_De_Usuarios (usuario, fecha, accion, detalles)
     VALUES (USER(), NOW(), 'UPDATE', CONCAT('Se actualizó la fila con ID ', NEW.codigo_sucursal));
 END;
 //
