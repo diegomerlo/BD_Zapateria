@@ -95,6 +95,13 @@ CREATE OR REPLACE VIEW mercado_pago AS
     WHERE p.codigo_medio_de_pago='MEP';
 SELECT * FROM mercado_pago;
 
+#Vista que muestra todos los empleados que siguen trabajando, todavía no han sido despedidos
+CREATE OR REPLACE VIEW empleados_actuales AS
+	SELECT * 
+    FROM empleado e
+    WHERE e.fecha_Baja IS NULL;
+SELECT * FROM empleados_actuales;
+
 #Vista que devuelve todos los clientes que hayan comprado en la sucursal de monte castro
 CREATE OR REPLACE VIEW Monte_Castro AS
 	SELECT * 
